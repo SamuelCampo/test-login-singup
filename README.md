@@ -54,14 +54,32 @@ SELECT * from usuarios
     c.	ld
     d.	dr
  <p>Con el comnado ls -ll se puede listar los elementos de un directorio</p>
- 
- <img src="https://drive.google.com/file/d/1W3BE90numoU3RJRBG3tZLm8zpCxTugmp/view?usp=sharing" />
 
 ## Ejercicios 4
 
 4.	En el siguiente fragmento de código hay un error, identifique cual es el error y descríbalo junto la solución:
 
+<img src="https://github.com/SamuelCampo/test-login-singup/blob/master/public/enuncuadi.png" />
+
 En este fragmento de código tenemos dos errores una en la línea 5 al finalizar donde no tenemos una coma para separar el array y el segundo estamos concatenando mal los valores ya que usamos + y en php se utiliza un punto para concatenar. Como bonus colocar un “\n” para que la salida del código se viera más ordenada
+
+## Ejercicios 5
+
+5.	Realice los siguientes middlewares de ejecución para la sesión del usuario los cuales deben validar:
+- Si la cuenta no está verificada mediante el campo email_verified_at, lo redirija a una página /verificación
+- Si la última sesión del usuario fue hace más de un día lo redirija a una página llamada /sesiones
+- Cuando el usuario inicie sesión le almacene una Cookie llamada origin_sesion si el usuario tiene el rol 1 y la IP de origen es 127.0.0.1
+- Autenticación por Two Factor (puede ser propio o de algún proveedor externo) con un máximo de sesión de 30 minutos
+
+Pueden encontrar la solución en el middleware 
+
+LoginSession -> <a href="https://github.com/SamuelCampo/test-login-singup/blob/master/app/Http/Middleware/LoginSession.php">Click aqui para ver el codigo</a>
+
+## Bonus track
+
+<p>Se creo sistema de login y registro con autenticación de dos factores para comprobar el correcto funcionamiento</p>
+<p>Se creo test para comprobar el buen uso de las funciones realizadas</p>
+
 
 
  
