@@ -1,64 +1,68 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# PRUEBA TECNICA PARA SENIOR LARAVEL
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Ejercicios Uno
 
-## About Laravel
+Genere las relaciones que crea pertinentes para relacionar cada tabla, en donde:
+-	Un usuario puede tener un solo rol.
+-	Un permiso puede estar en muchos roles
+-	Un rol puede estar en muchos permisos
+Genere las siguientes sentencias en formato SQL:
+-	Los usuarios que tengan el rol 1 y 2.
+-	Los permisos que se tienen del rol 1
+-	Los usuarios y el rol que tienen el permiso 2
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Respuesta 
+    
+ INSERT INTO usuarios (id,nombre,apellido,correo,telefono,roles_id) VALUES ( 1,'Samuel','Campo','samuelcampo@miweb.com','+573219646346',1);
+ INSERT INTO usuarios (id,nombre,apellido,correo,telefono,roles_id) VALUES ( 1,'Martha','Ocampo','mocampo@miweb.com','+573219646346',2);
+ 
+ INSERT INTO roles (id,nombre) values (1,'Editor');
+ INSERT INTO roles (id,nombre) values (2,'Administrador');
+ INSERT INTO roles (id,nombre) values (3,'Suscriptor');
+ 
+ INSERT INTO permisos (id,permisos) VALUES (1,'Eliminar');
+ INSERT INTO permisos (id,permisos) VALUES (2,'Modificar');
+ INSERT INTO permisos (id,permisos) VALUES (3,'Guardar');
+ 
+ INSERT INTO roles_permisos (id_rol_permiso,sku_rol,sku_permisos) VALUES (1,1,1);
+ INSERT INTO roles_permisos (id_rol_permiso,sku_rol,sku_permisos) VALUES (2,1,2);
+ INSERT INTO roles_permisos (id_rol_permiso,sku_rol,sku_permisos) VALUES (3,1,3);
+ INSERT INTO roles_permisos (id_rol_permiso,sku_rol,sku_permisos) VALUES (4,2,1);
+ INSERT INTO roles_permisos (id_rol_permiso,sku_rol,sku_permisos) VALUES (5,2,2);
+ INSERT INTO roles_permisos (id_rol_permiso,sku_rol,sku_permisos) VALUES (6,2,3);
+ 
+SELECT * FROM usuarios WHERE roles_id IN (1,2)
+SELECT * FROM usuarios WHERE roles_id = 1
+SELECT * from usuarios
+	INNER JOIN roles ON usuarios.roles_id = roles.id 
+    INNER JOIN roles_permisos ON roles_permisos.sku_rol = roles.id 
+    INNER JOIN permisos ON permisos.id = roles_permisos.sku_permisos 
+    where permisos.id = 2
+    
+    
+ ## Ejercicios 2
+ 
+ <p>2.	En el manejo de servicios en la nube (Azure, AWS, CloudFlare, etc.) hay tipos de servicios los cuales son influyentes para la administración de servicios de una compañía; de acuerdo con esto, mencione que conocimientos y experiencia tiene ud en servicios en la nube, ¿y especifique en cuáles? </p>
+ 
+ Tengo conicmientos en desplegar proyecto en servidores de Ubuntu 20.4 mayormente, despliegue de sitios utilizando la configuración de dns cloudfare
+ 
+ ## Ejercicios 3
+ 
+ 3.	En servidores Linux/Unix la sentencia para listar elementos de un directorio es:
+    a.	ll
+    b.	dir
+    c.	ld
+    d.	dr
+ <p>Con el comnado ls -ll se puede listar los elementos de un directorio</p>
+ 
+ <img src="https://drive.google.com/file/d/1W3BE90numoU3RJRBG3tZLm8zpCxTugmp/view?usp=sharing" />
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Ejercicios 4
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+4.	En el siguiente fragmento de código hay un error, identifique cual es el error y descríbalo junto la solución:
 
-## Learning Laravel
+En este fragmento de código tenemos dos errores una en la línea 5 al finalizar donde no tenemos una coma para separar el array y el segundo estamos concatenando mal los valores ya que usamos + y en php se utiliza un punto para concatenar. Como bonus colocar un “\n” para que la salida del código se viera más ordenada
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+ 
+ 
